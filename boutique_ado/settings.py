@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', # create proper call backs when using social media to sign-in
+    'allauth',
+    'allauth.account',  # Logging in and out, user registration and password resets
+    'allauth.socialaccount',  # Logging in via social media providers
 ]
 
 MIDDLEWARE = [
@@ -59,13 +63,39 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+                'django.template.context_processors.request',  # required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = [ # These square brackets were curved brackets in the video in case there is a problem later
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  # authentication using either usernames or emails
+"""
+The next three email settings make it so that an email is required to register for the site.
+Verifying your email is mandatory so we know users are using a real email.
+The are going to be required to enter their email twice on the registration page
+to make sure that they haven't made any typos.
+"""
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_USERNAME_MIN_LENGTH = 4  # setting a minimum username length of four characters
+LOGIN_URL = '/accounts/login/'  # specifying a login url
+LOGIN_REDIRECT_URL = '/'  # specifying a redirect back to after logging in
 
 WSGI_APPLICATION = 'boutique_ado.wsgi.application'
 
