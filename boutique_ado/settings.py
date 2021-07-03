@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',  # Logging in and out, user registration and password resets
     'allauth.socialaccount',  # Logging in via social media providers
-    'home',
+    'home', # home app created
+    'products', # products app crested
 ]
 
 MIDDLEWARE = [
