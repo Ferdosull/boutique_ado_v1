@@ -38,12 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites', # create proper call backs when using social media to sign-in
+    'django.contrib.sites',  # create proper call backs when using social media to sign-in
     'allauth',
     'allauth.account',  # Logging in and out, user registration and password resets
     'allauth.socialaccount',  # Logging in via social media providers
-    'home', # home app created
-    'products', # products app crested
+    'home',  # home app created
+    'products',  # products app created
 ]
 
 MIDDLEWARE = [
@@ -77,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = [ # These square brackets were curved brackets in the video in case there is a problem later
+AUTHENTICATION_BACKENDS = [  # These square brackets were curved brackets in the video in case there is a problem later
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 
