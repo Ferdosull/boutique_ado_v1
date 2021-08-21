@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-2k1qw75+vx==$cd9@gse#&idp*d@yw!vv00d4h$(7r3b97-3(3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ferdia-boutique-ado', 'localhost']
+ALLOWED_HOSTS = ['ferdia-boutique-ado.herokuapp.com', 'localhost']
 
 
 # Application definition
