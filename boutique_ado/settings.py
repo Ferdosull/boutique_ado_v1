@@ -26,8 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = 'DEVELOPMENT' in os.environ
+# DEBUG = 'DEVELOPMENT' in os.environ
+if 'DEBUG_SETTINGS' in os.environ:
+    DEBUG = os.environ.get('DEBUG_SETTINGS')
+else:
+    DEBUG = True
+
 
 ALLOWED_HOSTS = ['ferdia-boutique-ado.herokuapp.com', 'localhost']
 
